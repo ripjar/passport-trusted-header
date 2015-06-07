@@ -1,5 +1,5 @@
 {
-  "name": "passport-trusted-headers",
+  "name": "passport-trusted-header",
   "version": "1.0.0",
   "description": "Passport.js strategy for trusted HTTP headers",
   "main": "src",
@@ -8,23 +8,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ripjar/passport-trusted-headers"
+    "url": "https://github.com/ripjar/passport-trusted-header"
   },
   "keywords": [
     "passport",
-    "authentication",
+    "tls",
+    "ssl",
+    "client",
+    "cert",
+    "certificate",
     "auth",
+    "authentication",
     "http",
     "header",
     "headers",
-    "trusted"
+    "trusted",
+    "nginx",
+    "apache"
   ],
   "author": "Joe Whitfield-Seed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ripjar/passport-trusted-headers/issues"
+    "url": "https://github.com/ripjar/passport-trusted-header/issues"
   },
-  "homepage": "https://github.com/ripjar/passport-trusted-headers",
+  "homepage": "https://github.com/ripjar/passport-trusted-header",
   "dependencies": {
     "passport-strategy": "1.*"
   },
