@@ -1,5 +1,8 @@
 # passport-trusted-header
 
+
+[![Build](https://travis-ci.org/ripjar/passport-trusted-header.svg?branch=master)](https://travis-ci.org/ripjar/passport-trusted-header)
+
 [passport.js](http://passportjs.org/) strategy for authentication by a trusted HTTP header.
 
 Node.js apps often have TLS handled by a front-end web server like [nginx](http://wiki.nginx.org/Main). For client cert authentication, the web server passes through certificate fields like [DN](http://httpd.apache.org/docs/2.2/ssl/ssl_intro.html#certificates) as HTTP headers. The Node app can use these headers for authentication.
