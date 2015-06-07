@@ -1,0 +1,38 @@
+{
+  "name": "passport-trusted-headers",
+  "version": "1.0.0",
+  "description": "Passport.js strategy for trusted HTTP headers",
+  "main": "src",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ripjar/passport-trusted-headers"
+  },
+  "keywords": [
+    "passport",
+    "authentication",
+    "auth",
+    "http",
+    "header",
+    "headers",
+    "trusted"
+  ],
+  "author": "Joe Whitfield-Seed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ripjar/passport-trusted-headers/issues"
+  },
+  "homepage": "https://github.com/ripjar/passport-trusted-headers",
+  "dependencies": {
+    "passport-strategy": "1.*"
+  },
+  "devDependencies": {
+    "passport": "^0.2.0",
+    "chai": "^1.9.1",
+    "colors": "^0.6.2",
+    "express": "3.*",
+    "mocha": "^1.20.1"
+  }
+}

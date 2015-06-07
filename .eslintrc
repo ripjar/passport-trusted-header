@@ -1,0 +1,11 @@
+{
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "eqeqeq": [2, "smart"],
+    "no-new": false,
+    "no-use-before-define": false,
+    "no-underscore-dangle": false
+  }
+}
