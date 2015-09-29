@@ -17,7 +17,8 @@ Create the strategy with an options object and a "verify request" callback.
 
 ### Options
 
- `headers` - required. Array of HTTP header names to extract. A request has to contain all of these headers to be authenticated.
+* `headers` - required. Array of HTTP header names to extract. A request has to contain all of these headers to be authenticated.
+* `passReqToCallback` - optional. Causes the request object to be supplied to the verify callback as the first parameter.
 
 The verify callback decides whether to authenticate each request. It called with the extracted header names/values and a [passport.js `done` callback](http://passportjs.org/guide/configure/).
 
@@ -31,6 +32,27 @@ var options =  {
 }
 
 passport.use(new Strategy(options, function(requestHeaders, done) {
+  var user = null;
+  var userDn = requestHeaders.TLS_CLIENT_DN;
+
+  // Authentication logic here!
+  if(userDn === 'CN=test-cn') {
+    user = { name: 'Test User' }
+  }
+
+  done(null, user);
+}));
+````
+
+The verify callback can be supplied with the `request` object by setting the `passReqToCallback` option to `true`, and changing callback arguments accordingly.
+
+````javascript
+var options =  {
+  headers: ['TLS_CLIENT_DN'],
+  passReqToCallback: true
+}
+
+passport.use(new Strategy(options, function(req, requestHeaders, done) {
   var user = null;
   var userDn = requestHeaders.TLS_CLIENT_DN;
 
