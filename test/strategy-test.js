@@ -116,6 +116,28 @@ describe("trusted headers strategy", function() {
       ok.should.eq(true);
     });
 
+    it("should pass the request object to the verify callback when directed", function () {
+      var passedReq;
+
+      strategy = new Strategy({
+        passReqToCallback: true,
+        headers: options.headers
+      }, function (req, cert, done) {
+        passedReq = req;
+        done(null, {});
+      });
+
+      strategy.fail = fail;
+      strategy.success = success;
+      req = helpers.dummyReq(null, null, headers);
+
+      strategy.authenticate(req);
+
+      failed.should.eq(false);
+      succeeded.should.eq(true);
+      passedReq.should.eq(req);
+    });
+
   });
 
 });

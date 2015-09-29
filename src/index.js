@@ -12,6 +12,7 @@ exports.Strategy = function TrustedHeadersStrategy(options, verify) {
   this.name = NAME;
   this._verify = verify;
   this._headers = options.headers;
+  this._passReqToCallback = options.passReqToCallback;
 };
 
 util.inherits(exports.Strategy, BaseStrategy);
@@ -37,12 +38,18 @@ exports.Strategy.prototype.authenticate = function authenticate(req) {
     }
   });
 
+  var verified = function verified(err, user) {
+    if (err) { return that.error(err); }
+    if (!user) { return that.fail(); }
+    that.success(user);
+  };
+
   if(foundHeaders) {
-    this._verify(extractedHeaders, function(err, user) {
-      if (err) { return that.error(err); }
-      if (!user) { return that.fail(); }
-      that.success(user);
-    });
+    if (this._passReqToCallback) {
+      this._verify(req, extractedHeaders, verified);
+    } else {
+      this._verify(extractedHeaders, verified);
+    }
   } else {
     this.fail();
   }
