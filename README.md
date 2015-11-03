@@ -25,7 +25,7 @@ The verify callback decides whether to authenticate each request. It called with
 
 ````javascript
 var passport = require('passport');
-var Strategy = require('passport-trusted-headers').Strategy;
+var Strategy = require('passport-trusted-header').Strategy;
 
 var options =  {
   headers: ['TLS_CLIENT_DN']
