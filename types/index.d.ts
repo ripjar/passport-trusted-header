@@ -1,4 +1,6 @@
-import {Request} from 'express';
+// TypeScript Version: 2.1
+
+import { Request } from 'express';
 
 import passport = require('passport');
 
@@ -18,27 +20,21 @@ export interface StrategyOptionsWithRequest {
   passReqToCallback: true;
 }
 
-export interface VerifyOptions {
-  message: string;
-}
+export type VerifyCallback = (error: any, user?: any) => void;
 
-export interface VerifyCallback {
-  (error: any, user?: any): void;
-}
+export type VerifyFunctionWithRequest = (
+  req: Request,
+  requestHeaders: RequestHeaders,
+  done: VerifyCallback
+) => void;
 
-export interface VerifyFunctionWithRequest {
-  (req: Request, requestHeaders: RequestHeaders, done: VerifyCallback): void;
-}
+export type VerifyFunction = (requestHeaders: RequestHeaders, done: VerifyCallback) => void;
 
-export interface VerifyFunction {
-  (requestHeaders: RequestHeaders, done: VerifyCallback): void;
-}
-
-declare class Strategy implements Strategy {
+export class Strategy implements Strategy {
   constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
   constructor(options: StrategyOptions, verify: VerifyFunction);
   constructor(verify: VerifyFunction);
 
   name: string;
-  authenticate: (req: Request, options?: Object) => void;
+  authenticate: (req: Request, options?: any) => void;
 }
