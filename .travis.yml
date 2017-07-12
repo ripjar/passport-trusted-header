@@ -4,3 +4,11 @@ node_js:
   - "4"
   - "0.12"
   - "0.10"
+
+script:
+  nv=$(node -v);
+  if [[ $nv == v6* ]] ; then
+    npm test;
+  else
+    npm run test-no-lint;
+  fi

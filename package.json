@@ -5,7 +5,8 @@
   "main": "src",
   "typings": "types",
   "scripts": {
-    "test": "mocha && dtslint types"
+    "test": "mocha && dtslint types",
+    "test-no-lint": "mocha"
   },
   "repository": {
     "type": "git",
