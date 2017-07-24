@@ -7,7 +7,5 @@ node_js:
 
 script:
     - npm test;
-    - nv=$(./node_modules/.bin/check-node-version -q --node '>= 6') || true;
-    - if [[ $nv != *"Error: Wanted node version"* ]]; then
-          npm run lint-types;
-      fi
+    - nv=$(./node_modules/.bin/check-node-version --node '>= 8') || true;
+    - if [[ "$nv" != *"Error"* ]]; then npm run lint-types; fi
