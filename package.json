@@ -5,8 +5,8 @@
   "main": "src",
   "typings": "types",
   "scripts": {
-    "test": "mocha && dtslint types",
-    "test-no-lint": "mocha"
+    "test": "mocha",
+    "lint-types": "dtslint types"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "chai": "^3.3.0",
+    "check-node-version": "^2.1.0",
     "colors": "^1.1.2",
     "dtslint": "^0.1.2",
     "express": "^4.13.3",
