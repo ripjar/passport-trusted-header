@@ -66,6 +66,17 @@ describe("trusted headers strategy", function() {
       failed.should.eq(true);
     });
 
+    it("should match headers regardless of case", function() {
+      strategy = new Strategy({ headers: ["H1", "h2"] }, function(cert) {
+        passedToVerify = cert;
+      });
+      
+      req = helpers.dummyReq(null, null, headers);
+
+      strategy.authenticate(req);
+      passedToVerify.should.eql({ H1: headers.h1, h2: headers.h2 });
+    });
+
     it("should pass extracted headers to the verify callback", function() {
       req = helpers.dummyReq(null, null, headers);
 
