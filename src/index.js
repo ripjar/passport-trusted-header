@@ -32,8 +32,8 @@ exports.Strategy.prototype.authenticate = function authenticate(req) {
       extractedHeaders = {};
 
   var foundHeaders = this._headers.every(function(h) {
-    if(req.headers[h]) {
-      extractedHeaders[h] = req.headers[h];
+    if(req.headers[h.toLowerCase()]) {
+      extractedHeaders[h] = req.headers[h.toLowerCase()];
       return true;
     }
   });
